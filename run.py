@@ -1,4 +1,6 @@
-from network import final_labels,final_data
+from network import train_dataset,validation_dataset,test_dataset,model
 
 if '__name__'=='__main__':
-    print(final_data.shape)
+
+    print(train_dataset)
+    print(model.summary())

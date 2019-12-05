@@ -3,6 +3,9 @@ import psutil
 import platform
 from datetime import datetime
 import numpy as np
+from sklearn.model_selection import train_test_split
+import tensorflow as tf
+
 
 
 
@@ -55,7 +58,7 @@ final_labels = np.array([[[]]])
 
 
 batch_size = 32
-epoch = 100
+epoch = 20
 
 for i in range(0,epoch):
   test_data = np.array([[]])
@@ -81,6 +84,13 @@ final_data = final_data.astype(np.float32)
 final_labels = final_labels.astype(np.float32)
 
 
+data_train_base,data_test,labels_train_base,labels_test = train_test_split(final_data,final_labels,test_size = 0.2)
+data_train,data_validation,labels_train,labels_validation = train_test_split(data_train_base,labels_train_base,test_size=0.3)
 
-print(final_data.shape)
-print(final_labels.shape)
+scaled_data_train = (data_train-data_train.mean())/data_train.std()
+scaled_data_validation = (data_validation-data_validation.mean())/data_validation.std()
+scaled_data_test = (data_test-data_test.mean())/data_test.std()
+
+train_dataset = tf.data.Dataset.from_tensor_slices((scaled_data_train,labels_train))
+test_dataset = tf.data.Dataset.from_tensor_slices((scaled_data_test,labels_test))
+validation_dataset = tf.data.Dataset.from_tensor_slices((scaled_data_validation,labels_validation))
