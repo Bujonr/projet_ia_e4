@@ -58,7 +58,7 @@ final_labels = np.array([[[]]])
 
 
 batch_size = 32
-epoch = 20
+epoch = 3
 
 for i in range(0,epoch):
   test_data = np.array([[]])
