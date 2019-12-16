@@ -27,6 +27,7 @@ class DenseModelV1(tf.keras.Model):#on considère que le réseau n'est pas récu
 model = DenseModelV1()
 
 
+
 @tf.function
 def train_step(data,label,model):
   with tf.GradientTape() as tape:
@@ -77,7 +78,7 @@ def train_network(model,train_dataset,validation_dataset,epoch,batch_size):
     for epoch in range(epoch):
       #training set
       b=0
-      
+
       for data_batch, labels_batch in train_dataset.batch(batch_size):
         train_step(data_batch,labels_batch,model)
         template = 'Batch {}/{}, Loss: {}, Accuracy: {} \n'
@@ -94,7 +95,7 @@ def train_network(model,train_dataset,validation_dataset,epoch,batch_size):
       #print_validation_loss.update_state(validation_loss.result())
       #print_train_accuracy.update_state(train_accuracy.result())
       #print_validation_accuracy.update_state(validation_accuracy.result())
-      loss_tra=np.append(loss_tra,np.asarray(float(train_loss.result())))
+      loss_tra = np.append(loss_tra,np.asarray(float(train_loss.result())))
       loss_val = np.append(loss_val,np.asarray(float(validation_loss.result())))
       acc_val = np.append(loss_val,np.asarray(float(validation_accuracy.result())))
       acc_tra = np.append(loss_val,np.asarray(float(train_accuracy.result())))
