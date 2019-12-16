@@ -1,4 +1,4 @@
-from network import train_dataset,validation_dataset,test_dataset,model
+from network import train_dataset,validation_dataset,test_dataset
 
 if '__name__'=='__main__':
 
