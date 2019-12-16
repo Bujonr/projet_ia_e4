@@ -1,8 +1,8 @@
 import tensorflow as tf
 #print(tf.__version__)
 from .data_process import train_dataset,validation_dataset,test_dataset,scaled_data_train
-from .network_model import train_network,DenseModelV1,plot_acc,plot_loss
-from .viewdata import train_data_viewer,validation_data_viewer,test_data_viewer
+from .network_model import train_network,DenseModelV1
+from .viewdata import train_data_viewer,validation_data_viewer,test_data_viewer,plot_acc,plot_loss
 
 
 print(tf.__version__)

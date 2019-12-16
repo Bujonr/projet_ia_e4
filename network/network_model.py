@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
 from .data_process import labels_train
 
 class DenseModelV1(tf.keras.Model):#on considère que le réseau n'est pas récurrent
@@ -63,52 +62,6 @@ train_accuracy = tf.keras.metrics.CategoricalAccuracy(name='train_accuracy')
 validation_accuracy = tf.keras.metrics.CategoricalAccuracy(name='validation_accuracy')
 
 
-"""
-def train_network(model,train_dataset,validation_dataset,epoch,batch_size):
-
-    b=0
-    print_train_loss=tf.keras.metrics.Mean(name='print_train_loss')
-    print_validation_loss=tf.keras.metrics.Mean(name='print_validation_loss')
-    print_train_accuracy= tf.keras.metrics.CategoricalAccuracy(name='print_train_accuracy')
-    print_validation_accuracy= tf.keras.metrics.CategoricalAccuracy(name='print_validation_accuracy')
-
-    loss_tra = np.array([])
-    loss_val = np.array([])
-    acc_tra = np.array([])
-    acc_val = np.array([])
-    for epoch in range(epoch):
-
-        for data_batch, labels_batch in train_dataset.batch(batch_size):
-
-            train_step(data_batch,labels_batch,model)
-            template = 'Batch {}/{}, Loss: {}, Accuracy: {} \n'
-            print(template.format(b,len(labels_train),train_loss.result(),train_accuracy.result()*100),end="")
-            b += batch_size
-         #validation set
-        for data_batch,labels_batch in validation_dataset.batch(batch_size):
-
-            validation_step(data_batch,labels_batch,model)
-        template = 'Epoch {}, Validation Loss : {}, Validation accuracy : {} \n'
-        print(template.format(epoch+1,validation_loss.result(),validation_accuracy.result()*100))
-
-
-
-        b = 0
-
-        loss_tra = np.append(loss_tra,np.asarray(float(train_loss.result())))
-        loss_val = np.append(loss_val,np.asarray(float(validation_loss.result())))
-        acc_val = np.append(loss_val,np.asarray(float(validation_accuracy.result())))
-        acc_tra = np.append(loss_val,np.asarray(float(train_accuracy.result())))
-
-
-        validation_loss.reset_states()
-        train_loss.reset_states()
-        validation_accuracy.reset_states()
-        train_accuracy.reset_states()
-
-        return model,loss_tra,loss_val,acc_val,acc_tra
-"""
-
 def train_network(model,train_dataset,validation_dataset,epoch,batch_size):
 
     b=0
@@ -154,18 +107,3 @@ def train_network(model,train_dataset,validation_dataset,epoch,batch_size):
       train_accuracy.reset_states()
 
     return model,loss_tra,loss_val,acc_val,acc_tra
-
-
-def plot_loss(loss_tra,loss_val):
-    plt.plot(loss_tra,label="Train")
-    plt.plot(loss_val,label="Validation")
-    plt.legend(loc="upper right")
-    plt.title("Loss")
-    plt.show()
-
-def plot_acc(acc_tra,acc_val):
-    plt.plot(acc_tra,label="Train")
-    plt.plot(acc_val,label="Validation")
-    plt.legend(loc="upper right")
-    plt.title("Accuracy")
-    plt.show()
