@@ -77,34 +77,76 @@ final_labels = np.array([[[]]])
 batch_size = 32
 epoch = 2
 
-for i in range(0,epoch):
-  test_data = np.array([[]])
-  test_labels = np.array([[]])
-  #création des batchs
-  for i in range(0,batch_size):
-      input_data = create_data()
-      input_data = np.array([input_data])
-      input_data = np.reshape(np.array([input_data]),(-1,6))
-     #print(input_data.shape)
+print("Quel type d'attaque ? 0 :None, 1 : Attaque, ...,100 : Stop")
+attak = 0
 
-      test_data = np.append(test_data,input_data)
-      test_data = np.reshape(test_data,(-1,6))
-      test_labels = np.append(test_labels,np.array([1,0]))
-      test_labels = np.reshape(test_labels,(-1,2))
-      print(input_data)
-      time.sleep(0.3)
-  final_data = np.append(final_data,test_data)
-  final_data = np.reshape(final_data,(-1,1,6))
-  final_labels = np.append(final_labels,test_labels)
-  final_labels = np.reshape(final_labels,(-1,1,2))
+while(attak != 100):
+
+    attak = input()
+    attak = int(attak ) #0 pas d'attaque, 1 attaque1, 2 attaque2,...
+    if attak ==0:
+
+        for i in range(0,epoch):
+          test_data = np.array([[]])
+          test_labels = np.array([[]])
+          #création des batchs
+          for i in range(0,batch_size):
+              input_data = create_data()
+              input_data = np.array([input_data])
+              input_data = np.reshape(np.array([input_data]),(-1,6))
+             #print(input_data.shape)
+
+              test_data = np.append(test_data,input_data)
+              test_data = np.reshape(test_data,(-1,6))
+              test_labels = np.append(test_labels,np.array([1,0]))
+              test_labels = np.reshape(test_labels,(-1,2))
+              print(input_data)
+              print(test_labels[i])
+              time.sleep(0.3)
+          final_data = np.append(final_data,test_data)
+          final_data = np.reshape(final_data,(-1,1,6))
+          final_labels = np.append(final_labels,test_labels)
+          final_labels = np.reshape(final_labels,(-1,1,2))
+        print("Quel type d'attaque ? 0 :None, 1 : Attaque, ...,100 : Stop")
 
 
-final_data = final_data.astype(np.float32)
-final_labels = final_labels.astype(np.float32)
+
+    elif attak==1:
+        for i in range(0,epoch):
+          test_data = np.array([[]])
+          test_labels = np.array([[]])
+          #création des batchs
+          for i in range(0,batch_size):
+              input_data = create_data()
+              input_data = np.array([input_data])
+              input_data = np.reshape(np.array([input_data]),(-1,6))
+             #print(input_data.shape)
+
+              test_data = np.append(test_data,input_data)
+              test_data = np.reshape(test_data,(-1,6))
+              test_labels = np.append(test_labels,np.array([0,1]))#change les labels ici
+              test_labels = np.reshape(test_labels,(-1,2))
+              print(input_data)
+              print(test_labels[i])
+
+              time.sleep(0.3)
+          final_data = np.append(final_data,test_data)
+          final_data = np.reshape(final_data,(-1,1,6))
+          final_labels = np.append(final_labels,test_labels)
+          final_labels = np.reshape(final_labels,(-1,1,2))
+        print("Quel type d'attaque ? 0 :None, 1 : Attaque, ...,100 : Stop")
+
+
+
+
 
 
 data_train_base,data_test,labels_train_base,labels_test = train_test_split(final_data,final_labels,test_size = 0.2)
 data_train,data_validation,labels_train,labels_validation = train_test_split(data_train_base,labels_train_base,test_size=0.3)
+
+final_data = final_data.astype(np.float32)
+final_labels = final_labels.astype(np.float32)
+scaled_data_test = (data_test-data_test.mean())/data_test.std()
 
 scaled_data_train = (data_train-data_train.mean())/data_train.std()
 scaled_data_validation = (data_validation-data_validation.mean())/data_validation.std()
@@ -117,3 +159,4 @@ validation_dataset = tf.data.Dataset.from_tensor_slices((scaled_data_validation,
 for data_batch, labels_batch in train_dataset.batch(batch_size):
 
     print(data_batch)
+    print(labels_batch)
