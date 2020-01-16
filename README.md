@@ -1,7 +1,7 @@
 # projet_ia_e4
-Ia - Deep learning visant à détecter les cyberattaques sur des systèmes type radar.
+**Ia - Deep learning visant à détecter les cyberattaques sur des systèmes type radar.**
 
-Utilisation de tensorflow 2.0
+**Utilisation de tensorflow 2.0**
 
 **run.py :** 
 
