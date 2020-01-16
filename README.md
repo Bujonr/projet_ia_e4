@@ -14,7 +14,7 @@ Utilisable via la commande `python3 -m pip install -r requirements.txt̀`
 
 **network folder :**
 
-Contient l'ensemble des fichiers nécessaires à la récupération des données, leur traitement et l'entraînement de l'IA
+Contient l'ensemble des fichiers nécessaires à la récupération des données, leur traitement, leur visualisation et l'entraînement de l'IA
 
 **network/__init__.py :**
 
