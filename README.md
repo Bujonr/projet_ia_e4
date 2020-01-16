@@ -20,5 +20,15 @@ Contient l'ensemble des fichiers nécessaires à la récupération des données,
 
 Contient l'instance du réseau défini dans `network_model.py`, les données récupérées via le fichier `data_process.py` et permet la visualisation des résultats via les fonctions définies dans `viewdata.py`
 
+**network/data_process.py :**
 
+Récupère les données via les sondes définies avec la partie **cyber**, permet de récupérer les données en boucle telle que 0 = état normal, 1 = attaque et 100 = fin
+
+**network/network_model.py :**
+
+Définie la classe qui permettra d'instancier le réseau ainsi que les fonctions utiles à l'entraînement
+
+**network/viewdata.py :**
+
+Définie les fonctions utiles à la visualisation de l'évolution de l'accuracy et la perte (loss) sur les données d'entraînement et de validation (pas de cross validation mais validation classique)
 
