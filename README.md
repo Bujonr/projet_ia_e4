@@ -1,4 +1,9 @@
 # projet_ia_e4
+
+**PARTIE IA**
+
+
+
 **Ia - Deep learning visant à détecter les cyberattaques sur des systèmes type radar.**
 
 **Utilisation de tensorflow 2.0**
@@ -31,4 +36,8 @@ Définie la classe qui permettra d'instancier le réseau ainsi que les fonctions
 **network/viewdata.py :**
 
 Définie les fonctions utiles à la visualisation de l'évolution de l'accuracy et la perte (loss) sur les données d'entraînement et de validation (pas de cross validation mais validation classique)
+
+
+
+**PARTIE SE**
 
