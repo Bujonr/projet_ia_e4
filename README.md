@@ -41,3 +41,16 @@ Définie les fonctions utiles à la visualisation de l'évolution de l'accuracy 
 
 **PARTIE SE**
 
+
+
+**SE - Création de sondes permettant de récuperer les caractéristiques physique du système**
+
+**Création des variables d'environnements**
+
+**~/.profile.sh**
+
+Fichier de commandes bash qui s'exécute automatiquement au lancement de la session de l'utilisateur. Elle se réinitialise à chaque démarrage d'une session et est differents pour chacune des sessions. 
+
+**Sondes.sh**
+
+Ensembles de commandes bash permettant de récuperer les valeurs des differentes sondes crées. 
